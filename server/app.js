@@ -18,4 +18,7 @@ app.set("port", process.env.PORT || 3000);
 // Utils
 app.use(morgan("dev"));
 
+// Root routes
+app.use("/profile", require("./routes/userRoutes"));
+
 module.exports = app;
