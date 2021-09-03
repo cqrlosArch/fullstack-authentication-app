@@ -1,8 +1,9 @@
 const User = require("../models/User");
+const passport = require("../passport/local");
 
 const signUp = (req, res) => {
     const { email, password } = req.body;
-
+    
     User.findOne({ email })
         .then((user) => {
             if (user) {
@@ -24,6 +25,14 @@ const signUp = (req, res) => {
         });
 };
 
+// const signIn = (req, res) => {
+//     loginStrategy.authenticate("local", { failureRedirect: "/login" }),
+//         function (req, res) {
+//             res.redirect("/");
+//         };
+// };
+
 module.exports = {
     signUp,
+ 
 };
