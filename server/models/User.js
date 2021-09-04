@@ -4,6 +4,7 @@ const { model, Schema } = require("mongoose");
 const bcrypt = require("bcrypt");
 
 const userSchema = new Schema({
+    social_id: String,
     name: String,
     password: String,
     bio: String,

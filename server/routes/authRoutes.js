@@ -28,4 +28,16 @@ router.get('/facebook/callback',
     res.redirect('/profile');
   });
 
+
+/* GOOGLE ROUTER */
+router.get('/google',
+  passport.authenticate('google', { scope: 'https://www.googleapis.com/auth/userinfo.profile' }));
+
+router.get('/google/callback',
+  passport.authenticate('google', { failureRedirect: '/login' }),
+  function(req, res) {
+    res.redirect('/profile');
+  });
+
+
 module.exports = router;
