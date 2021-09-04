@@ -1,5 +1,5 @@
 const User = require("../models/User");
-const passport = require("../passport/local");
+const passport = require("../passport/localStrategy");
 
 const signUp = (req, res) => {
     const { email, password } = req.body;

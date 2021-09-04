@@ -1,6 +1,6 @@
 const { Router } = require("express");
 const { signUp } = require("../controllers/authCtrl");
-const passport = require("../passport/local");
+const passport = require("../passport/localStrategy");
 
 const router = Router();
 

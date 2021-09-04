@@ -26,8 +26,9 @@ const localLogin = new LocalStrategy(
                 return done(null, false, { message: "Invalid email" });
             }
 
-            const match = User.comparePassword(password);
-
+            // Devuelve una promesa (await)
+            const match = await User.comparePassword(password, user.password);
+            console.log(match);
             if (match) {
                 return done(null, user);
             }
