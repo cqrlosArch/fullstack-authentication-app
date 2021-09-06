@@ -9,7 +9,7 @@ const localLogin = new LocalStrategy(
         console.log(email, password);
         try {
             const user = await User.findOne({ email });
-
+            
             if (!user) {
                 return done(null, false, { message: "Invalid email" });
             }

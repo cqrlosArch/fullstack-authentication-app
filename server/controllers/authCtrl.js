@@ -14,6 +14,7 @@ const signUp = (req, res) => {
                 const newUser = new User({
                     email,
                     password,
+                    provider: "local",
                 });
                 newUser.save().then(() => {
                     res.status(201).send(newUser);

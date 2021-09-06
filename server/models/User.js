@@ -10,7 +10,6 @@ const userSchema = new Schema({
     bio: String,
     email: {
         type: String,
-        require: true,
         unique: true,
         validate: {
             validator: (v) =>
@@ -21,6 +20,7 @@ const userSchema = new Schema({
     },
     photo: String,
     phone: Number,
+    provider: String,
 });
 
 // eslint-disable-next-line consistent-return

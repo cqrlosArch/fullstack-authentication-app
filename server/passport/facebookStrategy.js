@@ -21,10 +21,10 @@ const facebookStrategy = new FacebookStrategy(
                 //No user was found... so create a new user with values from Facebook (all the profile. stuff)
                 if (!user) {
                     user = new User({
+                        social_id: profile.id,
                         name: profile?.displayName,
                         email: profile?.emails[0]?.value,
                         username: profile?.username,
-                        provider: "facebook",
                         provider: "facebook",
                         displayName: profile?.displayName,
                         //now in the future searching on User.findOne({'facebook.id': profile.id } will match because of this next line
