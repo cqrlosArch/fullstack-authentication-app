@@ -1,17 +1,21 @@
-const GithubStrategy = require("passport-github2").Strategy;
+const TwitterStrategy = require("passport-twitter").Strategy;
 const User = require("../models/User");
 
-const githubStrategy = new GithubStrategy(
+const twitterStrategy = new TwitterStrategy(
     {
-        clientID: process.env.GITHUB_APP_ID,
-        clientSecret: process.env.GITHUB_APP_SECRET,
-        callbackURL: process.env.GITHUB_CALLBACK_URL,
+        consumerKey: process.env.TWITTER_APP_API_ID,
+        consumerSecret: process.env.TWITTER_APP_API_SECRET,
+        accessToken: process.env.TWITTER_APP_TOKEN_ID,
+        secretAccessToken: process.env.TWITTER_APP_TOKEN_SECRET,
+        callbackURL: process.env.TWITTER_CALLBACK_URL,
+        store: true,
     },
     function (accessToken, refreshToken, profile, done) {
+        console.log(profile);
         //check user table for anyone with a facebook ID of profile.id
         User.findOne(
             {
-                "social_id": profile.id,
+                social_id: profile.id,
             },
             function (err, user) {
                 if (err) {
@@ -21,18 +25,17 @@ const githubStrategy = new GithubStrategy(
                 if (!user) {
                     user = new User({
                         social_id: profile?.id,
-                        name: profile?._json?.name,
-                        provider: "github",
-                        photo:profile?._json?.avatar_url,
-                        bio: profile?._json?.bio,
+                        name: profile?.displayName,
+                        provider: "twitter",
+                        photo: profile?.photos[0]?.value,
+                        bio: profile?._json?.description,
                     });
-                    console.log(user)
+
                     user.save(function (err) {
                         if (err) console.log(err);
                         return done(err, user);
                     });
                 } else {
-                    console.log(user)
                     //found user. Return
                     return done(err, user);
                 }
@@ -41,4 +44,4 @@ const githubStrategy = new GithubStrategy(
     }
 );
 
-module.exports = githubStrategy;
+module.exports = twitterStrategy;

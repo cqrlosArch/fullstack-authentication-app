@@ -6,6 +6,7 @@ const googleStrategy = new GoogleStrategy(
         clientID: process.env.GOOGLE_APP_ID,
         clientSecret: process.env.GOOGLE_APP_SECRET,
         callbackURL: process.env.GOOGLE_CALLBACK_URL,
+        
     },
     function (accessToken, refreshToken, profile, cb) {
         User.findOne({ social_id: profile.id }, function (err, user) {

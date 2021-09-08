@@ -1,0 +1,20 @@
+MONGO_URL=mongodb://localhost:27017/api_auth
+# Facebook
+FACEBOOK_APP_ID=3014693022185449
+FACEBOOK_APP_SECRET=4bfc7c514a35feaa0913f0ad7c59f5e5
+FACEBOOK_CALLBACK_URL=https://localhost:3000/auth/facebook/callback
+
+# Google
+GOOGLE_APP_ID=719927042749-8ns8soo0m4202n5n63u69qtkja357vkj.apps.googleusercontent.com
+GOOGLE_APP_SECRET=s0UEm7honRFDctVTY81536YM
+GOOGLE_CALLBACK_URL=https://localhost:3000/auth/google/callback
+
+# Github
+GITHUB_APP_ID=79ec96e4da5216b930f6
+GITHUB_APP_SECRET=b3b6473cdcceabfded3fcdd77c8e6721b398c7db
+GITHUB_CALLBACK_URL=https://localhost:3000/auth/github/callback
+
+# Twitter
+TWITTER_APP_ID=21873260
+TWITTER_APP_SECRET= CAZ31kQcSeY8CtrmoExFmOnNMtYnaQYb8GHB6Ca0bEQrB
+TWITTER_CALLBACK_URL=https://localhost:3000/auth/twitter/callback

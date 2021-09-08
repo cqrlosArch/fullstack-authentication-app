@@ -4,6 +4,7 @@ const helmet = require("helmet");
 const morgan = require("morgan");
 const flash = require("connect-flash");
 const passport = require("passport");
+const session = require("express-session");
 
 require("dotenv").config();
 
@@ -15,6 +16,11 @@ app.use(helmet());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev"));
+app.use(session({
+    resave: true,
+    saveUninitialized: true,
+    secret: 'bla bla bla' 
+  }));
 app.use(passport.initialize());
 app.use(passport.session());
 const https = require("https");
@@ -39,4 +45,4 @@ app.use("/profile", require("./routes/userRoutes"));
 app.use("/auth", require("./routes/authRoutes"));
 
 const server = https.createServer(options, app);
-module.exports = {server, app};
+module.exports = { server, app };
