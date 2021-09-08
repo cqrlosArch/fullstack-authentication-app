@@ -4,6 +4,7 @@ const passport = require("../passport");
 
 const router = Router();
 
+/* LOCAL ROUTER */
 //controller
 router.post("/signup", signUp);
 
